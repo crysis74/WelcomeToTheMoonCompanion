@@ -1,0 +1,254 @@
+[
+  {
+    "number": "15",
+    "type": "energy"
+  },
+  {
+    "number": "15",
+    "type": "robot"
+  },
+  {
+    "number": "14",
+    "type": "plant"
+  },
+  {
+    "number": "14",
+    "type": "robot"
+  },
+  {
+    "number": "13",
+    "type": "planning"
+  },
+  {
+    "number": "13",
+    "type": "astronaut"
+  },
+  {
+    "number": "13",
+    "type": "water"
+  },
+  {
+    "number": "12",
+    "type": "planning"
+  },
+  {
+    "number": "12",
+    "type": "astronaut"
+  },
+  {
+    "number": "12",
+    "type": "plant"
+  },
+  {
+    "number": "12",
+    "type": "energy"
+  },
+  {
+    "number": "11",
+    "type": "plant"
+  },
+  {
+    "number": "11",
+    "type": "energy"
+  },
+  {
+    "number": "11",
+    "type": "energy"
+  },
+  {
+    "number": "11",
+    "type": "robot"
+  },
+  {
+    "number": "11",
+    "type": "robot"
+  },
+  {
+    "number": "10",
+    "type": "planning"
+  },
+  {
+    "number": "10",
+    "type": "astronaut"
+  },
+  {
+    "number": "10",
+    "type": "water"
+  },
+  {
+    "number": "10",
+    "type": "plant"
+  },
+  {
+    "number": "10",
+    "type": "energy"
+  },
+  {
+    "number": "10",
+    "type": "robot"
+  },
+  {
+    "number": "9",
+    "type": "water"
+  },
+  {
+    "number": "9",
+    "type": "plant"
+  },
+  {
+    "number": "9",
+    "type": "plant"
+  },
+  {
+    "number": "9",
+    "type": "energy"
+  },
+  {
+    "number": "9",
+    "type": "energy"
+  },
+  {
+    "number": "9",
+    "type": "robot"
+  },
+  {
+    "number": "8",
+    "type": "planning"
+  },
+  {
+    "number": "8",
+    "type": "astronaut"
+  },
+  {
+    "number": "8",
+    "type": "water"
+  },
+  {
+    "number": "8",
+    "type": "plant"
+  },
+  {
+    "number": "8",
+    "type": "plant"
+  },
+  {
+    "number": "8",
+    "type": "robot"
+  },
+  {
+    "number": "8",
+    "type": "robot"
+  },
+  {
+    "number": "7",
+    "type": "water"
+  },
+  {
+    "number": "7",
+    "type": "plant"
+  },
+  {
+    "number": "7",
+    "type": "plant"
+  },
+  {
+    "number": "7",
+    "type": "energy"
+  },
+  {
+    "number": "7",
+    "type": "energy"
+  },
+  {
+    "number": "7",
+    "type": "robot"
+  },
+  {
+    "number": "6",
+    "type": "planning"
+  },
+  {
+    "number": "6",
+    "type": "astronaut"
+  },
+  {
+    "number": "6",
+    "type": "water"
+  },
+  {
+    "number": "6",
+    "type": "plant"
+  },
+  {
+    "number": "6",
+    "type": "energy"
+  },
+  {
+    "number": "6",
+    "type": "robot"
+  },
+  {
+    "number": "5",
+    "type": "plant"
+  },
+  {
+    "number": "5",
+    "type": "energy"
+  },
+  {
+    "number": "5",
+    "type": "energy"
+  },
+  {
+    "number": "5",
+    "type": "robot"
+  },
+  {
+    "number": "5",
+    "type": "robot"
+  },
+  {
+    "number": "4",
+    "type": "planning"
+  },
+  {
+    "number": "4",
+    "type": "astronaut"
+  },
+  {
+    "number": "4",
+    "type": "plant"
+  },
+  {
+    "number": "4",
+    "type": "energy"
+  },
+  {
+    "number": "3",
+    "type": "planning"
+  },
+  {
+    "number": "3",
+    "type": "astronaut"
+  },
+  {
+    "number": "3",
+    "type": "water"
+  },
+  {
+    "number": "2",
+    "type": "plant"
+  },
+  {
+    "number": "2",
+    "type": "robot"
+  },
+  {
+    "number": "1",
+    "type": "energy"
+  },
+  {
+    "number": "1",
+    "type": "robot"
+  }
+]

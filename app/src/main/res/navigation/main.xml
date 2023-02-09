@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/gameCreationFragment">
+
+    <fragment
+        android:id="@+id/gameCreationFragment"
+        android:name="com.example.welcometothemooncompanion.ui.gamecreation.GameCreationFragment"
+        android:label="GameCreationFragment"
+        tools:layout="@layout/fmt_game_creation">
+        <action
+            android:id="@+id/toGameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.welcometothemooncompanion.ui.game.GameFragment"
+        android:label="GameFragment"
+        tools:layout="@layout/fmt_game" />
+</navigation>
