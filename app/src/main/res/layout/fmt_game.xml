@@ -23,6 +23,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
+    <ImageView
+        android:id="@+id/screenTypeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@drawable/mirrored_screen"
+        app:layout_constraintEnd_toStartOf="@+id/closeBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
     <include
         android:id="@+id/secondaryPackCard"
         layout="@layout/pack_card_layout"
@@ -43,7 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/continueBtn"
         android:layout_width="wrap_content"
@@ -61,6 +69,7 @@
         app:layout_constraintGuide_percent="0.44" />
 
     <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:dividerInsetEnd="16dp"

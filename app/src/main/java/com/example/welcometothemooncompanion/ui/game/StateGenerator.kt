@@ -12,7 +12,7 @@ data class DeckState(
 )
 
 class StateGenerator(private val initDeck: CardDeck) {
-    
+
     private val firstColumn = initDeck.firstColumn.toMutableList()
     private val secondColumn = initDeck.secondColumn.toMutableList()
     private val thirdColumn = initDeck.thirdColumn.toMutableList()

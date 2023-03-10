@@ -1,8 +1,12 @@
 package com.example.welcometothemooncompanion.ui.game
 
 import android.os.Bundle
+import android.transition.TransitionManager
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.welcometothemooncompanion.R
@@ -11,6 +15,9 @@ import com.example.welcometothemooncompanion.databinding.FmtGameBinding
 import com.example.welcometothemooncompanion.domain.Card
 import com.example.welcometothemooncompanion.domain.CardType
 import com.example.welcometothemooncompanion.domain.CardType.*
+import com.example.welcometothemooncompanion.domain.ScreenType
+import com.example.welcometothemooncompanion.domain.ScreenType.Default
+import com.example.welcometothemooncompanion.domain.ScreenType.Mirrored
 import com.example.welcometothemooncompanion.ui.game.GameViewModel.UiState
 import com.example.welcometothemooncompanion.util.observe
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,26 +44,65 @@ class GameFragment : Fragment(R.layout.fmt_game) {
         backBtn.setOnClickListener {
             viewModel.onBackClicked()
         }
+        screenTypeBtn.setOnClickListener {
+            viewModel.toggleScreenType()
+        }
     }
 
     private fun renderState(state: UiState) {
         when (state) {
-            is UiState.Content -> renderContent(state)
-            UiState.Loading -> return
+            is UiState.Content -> {
+                renderContent(state)
+                binding.root.isVisible = true
+            }
+            UiState.Loading -> binding.root.isVisible = false
         }
     }
 
     private fun renderContent(content: UiState.Content) = with(binding) {
-        val state = content.state
-        with(mainPackCard){
+        renderScreenTypeButton(content.screenType)
+        renderCards(content.state)
+        renderScreenType(content.screenType)
+    }
+
+    private fun renderScreenTypeButton(screenType: ScreenType) {
+        val image = when (screenType) {
+            Default -> R.drawable.mirrored_screen
+            Mirrored -> R.drawable.default_screen
+        }
+        binding.screenTypeBtn.setImageResource(image)
+    }
+
+    private fun renderCards(state: DeckState) = with(binding) {
+        with(mainPackCard) {
             renderCard(firstCardLayout, state.firstColumn)
             renderCard(secondCardLayout, state.secondColumn)
             renderCard(thirdCardLayout, state.thirdColumn)
         }
-        with(secondaryPackCard){
+        with(secondaryPackCard) {
             renderCard(firstCardLayout, state.firstColumn)
             renderCard(secondCardLayout, state.secondColumn)
             renderCard(thirdCardLayout, state.thirdColumn)
+        }
+    }
+
+    private fun renderScreenType(screenType: ScreenType) = with(binding) {
+        TransitionManager.beginDelayedTransition(root)
+        secondaryPackCard.root.isVisible = screenType == Mirrored
+        divider.isVisible = screenType == Mirrored
+        mainPackCard.root.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            when (screenType) {
+                Default -> {
+                    topToTop = ConstraintLayout.LayoutParams.PARENT_ID
+                    topToBottom = ConstraintLayout.LayoutParams.UNSET
+                    matchConstraintPercentHeight = 0.38F
+                }
+                Mirrored -> {
+                    topToTop = ConstraintLayout.LayoutParams.UNSET
+                    topToBottom = guideline2.id
+                    matchConstraintPercentHeight = 1F
+                }
+            }
         }
     }
 
