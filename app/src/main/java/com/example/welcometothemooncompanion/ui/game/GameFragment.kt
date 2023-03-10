@@ -9,6 +9,8 @@ import com.example.welcometothemooncompanion.R
 import com.example.welcometothemooncompanion.databinding.CardLayoutBinding
 import com.example.welcometothemooncompanion.databinding.FmtGameBinding
 import com.example.welcometothemooncompanion.domain.Card
+import com.example.welcometothemooncompanion.domain.CardType
+import com.example.welcometothemooncompanion.domain.CardType.*
 import com.example.welcometothemooncompanion.ui.game.GameViewModel.UiState
 import com.example.welcometothemooncompanion.util.observe
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,6 +24,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
         super.onViewCreated(view, savedInstanceState)
         setOnClickListeners()
         viewModel.uiState.observe(viewLifecycleOwner, ::renderState)
+        binding.secondaryPackCard.root.rotation = 180F
     }
 
     private fun setOnClickListeners() = with(binding) {
@@ -45,15 +48,30 @@ class GameFragment : Fragment(R.layout.fmt_game) {
 
     private fun renderContent(content: UiState.Content) = with(binding) {
         val state = content.state
-        renderCard(firstCardLayout, state.firstColumn)
-        renderCard(secondCardLayout, state.secondColumn)
-        renderCard(thirdCardLayout, state.thirdColumn)
+        with(mainPackCard){
+            renderCard(firstCardLayout, state.firstColumn)
+            renderCard(secondCardLayout, state.secondColumn)
+            renderCard(thirdCardLayout, state.thirdColumn)
+        }
+        with(secondaryPackCard){
+            renderCard(firstCardLayout, state.firstColumn)
+            renderCard(secondCardLayout, state.secondColumn)
+            renderCard(thirdCardLayout, state.thirdColumn)
+        }
     }
 
     private fun renderCard(cardLayoutBinding: CardLayoutBinding, card: Card) =
         with(cardLayoutBinding) {
             number.text = card.number.toString()
-            // TODO add images
-            typeImg.setImageResource(androidx.appcompat.R.drawable.abc_btn_check_material)
+            typeImg.setImageResource(getCard(card.type))
         }
+
+    private fun getCard(type: CardType) = when (type) {
+        Robot -> R.drawable.robot
+        Planning -> R.drawable.planning
+        Water -> R.drawable.water
+        Plant -> R.drawable.plant
+        Energy -> R.drawable.energy
+        Astronaut -> R.drawable.astronaut
+    }
 }

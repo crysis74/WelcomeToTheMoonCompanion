@@ -1,22 +1,6 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="game_creation_title">Генерация колоды</string>
-    <string name="game_creation_ancient">Древний</string>
-    <string name="no_ancient">Не выбран</string>
-    <string name="difficult_mythos_cards">Трудные карты</string>
-    <string name="normal_mythos_cards">Обычные карты</string>
-    <string name="easy_mythos_cards">Легкие карты</string>
-    <string name="create_deck">Создать колоду</string>
-    <string name="start_game">Начать игру</string>
+    <string name="app_name">Welcome To The Moon Companion</string>
     <string name="continue_game">Далее</string>
-    <string name="game_over">Игра окончена</string>
-    <string name="unfinished_game">Прошлая игра была незакончена. Хотите загрузить?</string>
-    <string name="yes">Да</string>
-    <string name="no">Нет</string>
+    <string name="game_creation_title">Генерация колоды</string>
+    <string name="create_deck">Создать колоду</string>
 </resources>
