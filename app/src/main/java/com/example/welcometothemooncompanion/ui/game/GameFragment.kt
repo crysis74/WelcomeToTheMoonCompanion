@@ -35,7 +35,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     }
 
     private fun setOnClickListeners() = with(binding) {
-        binding.continueBtn.setOnClickListener {
+        continueBtn.setOnClickListener {
             viewModel.onContinueClicked()
         }
         closeBtn.setOnClickListener {
@@ -95,7 +95,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
                 Default -> {
                     topToTop = ConstraintLayout.LayoutParams.PARENT_ID
                     topToBottom = ConstraintLayout.LayoutParams.UNSET
-                    matchConstraintPercentHeight = 0.38F
+                    matchConstraintPercentHeight = 0.45F
                 }
                 Mirrored -> {
                     topToTop = ConstraintLayout.LayoutParams.UNSET

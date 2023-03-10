@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Welcome To The Moon Companion</string>
-    <string name="continue_game">Далее</string>
     <string name="game_creation_title">Генерация колоды</string>
     <string name="create_deck">Создать колоду</string>
 </resources>
