@@ -1,6 +1,5 @@
 package com.example.welcometothemooncompanion.decktools
 
-import android.util.Log
 import com.example.welcometothemooncompanion.domain.CardDeck
 import com.example.welcometothemooncompanion.repository.CardRepository
 

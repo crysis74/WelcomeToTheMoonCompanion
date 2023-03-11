@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 data class DeckState(
     val firstColumn: Card,
     val secondColumn: Card,
-    val thirdColumn: Card
+    val thirdColumn: Card,
+    val isFirstTurn: Boolean
 )
 
 class StateGenerator(private val initDeck: CardDeck) {
@@ -17,7 +18,8 @@ class StateGenerator(private val initDeck: CardDeck) {
     private val secondColumn = initDeck.secondColumn.toMutableList()
     private val thirdColumn = initDeck.thirdColumn.toMutableList()
     private var cache = 0
-
+    private val isFirstTurn: Boolean
+        get() = cache == 1
     val state = MutableStateFlow(generateState())
 
     fun next() {
@@ -31,12 +33,19 @@ class StateGenerator(private val initDeck: CardDeck) {
         }
     }
 
-    private fun generateState() =
-        DeckState(
-            firstColumn = makeCard(firstColumn),
-            secondColumn = makeCard(secondColumn),
-            thirdColumn = makeCard(thirdColumn)
-        ).also { cache++ }
+    private fun generateState(): DeckState {
+        val firstColumn = makeCard(firstColumn)
+        val secondColumn = makeCard(secondColumn)
+        val thirdColumn = makeCard(thirdColumn)
+        cache++
+        return DeckState(
+            firstColumn = firstColumn,
+            secondColumn = secondColumn,
+            thirdColumn = thirdColumn,
+            isFirstTurn = isFirstTurn
+        )
+    }
+
 
     private fun fulfilledColumns() {
         val deck = initDeck.shuffleDeck()
@@ -46,7 +55,7 @@ class StateGenerator(private val initDeck: CardDeck) {
     }
 
     fun prev() {
-        if (cache <= 2) return
+        if (isFirstTurn) return
         cache -= 2
         next()
     }

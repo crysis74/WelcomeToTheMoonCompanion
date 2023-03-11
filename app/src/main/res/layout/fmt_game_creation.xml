@@ -7,28 +7,40 @@
     tools:context=".ui.main.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/game_creation_title"
-        android:textAllCaps="true"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/knewave"
+        android:text="@string/app_name_title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deckGeneration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/game_creation_title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appName" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/generateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="128dp"
+        android:fontFamily="@font/knewave"
         android:text="@string/create_deck"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

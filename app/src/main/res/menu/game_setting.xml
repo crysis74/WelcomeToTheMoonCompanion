@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/back"
-        android:icon="@drawable/ic_back"
-        android:title="@string/setting_back"
+        android:id="@+id/close"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/setting_close"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/screenType"
-        android:icon="@drawable/mirrored_screen"
+        android:icon="@drawable/ic_default_screen"
         android:title="@string/setting_screen_type"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/close"
-        android:icon="@drawable/ic_close"
-        android:title="@string/setting_close"
+        android:id="@+id/back"
+        android:icon="@drawable/ic_undo"
+        android:title="@string/setting_back"
         app:showAsAction="ifRoom" />
 </menu>

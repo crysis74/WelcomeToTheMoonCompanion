@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsCompat.Type.*
+import androidx.core.view.WindowInsetsCompat.Type.systemBars
+import androidx.core.view.WindowInsetsCompat.Type.systemGestures
 import androidx.core.view.WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 import androidx.core.view.updatePadding
 import com.example.welcometothemooncompanion.R

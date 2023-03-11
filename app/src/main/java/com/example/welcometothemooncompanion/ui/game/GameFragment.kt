@@ -20,6 +20,8 @@ import com.example.welcometothemooncompanion.domain.ScreenType.Default
 import com.example.welcometothemooncompanion.domain.ScreenType.Mirrored
 import com.example.welcometothemooncompanion.ui.game.GameViewModel.UiState
 import com.example.welcometothemooncompanion.util.observe
+import com.example.welcometothemooncompanion.util.setEnabledMenuItem
+import com.example.welcometothemooncompanion.util.setIconMenuItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameFragment : Fragment(R.layout.fmt_game) {
@@ -27,11 +29,14 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     private val viewModel: GameViewModel by viewModel()
     private val binding: FmtGameBinding by viewBinding()
 
+    private var isFistAppease = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setOnClickListeners()
         viewModel.uiState.observe(viewLifecycleOwner, ::renderState)
         binding.secondaryPackCard.root.rotation = 180F
+        binding.root.alpha = 0f
     }
 
     private fun setOnClickListeners() = with(binding) {
@@ -60,16 +65,26 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     private fun renderState(state: UiState) {
         when (state) {
             is UiState.Content -> {
+                binding.root.animate().alpha(1f).duration = 250
                 renderContent(state)
-                binding.root.isVisible = true
             }
-            UiState.Loading -> binding.root.isVisible = false
+            UiState.Loading -> return
         }
     }
 
-    private fun renderContent(content: UiState.Content) = with(binding) {
+    private fun renderContent(content: UiState.Content) {
+        renderButtonAppBar(content)
         renderCards(content.state)
         renderScreenType(content.screenType)
+    }
+
+    private fun renderButtonAppBar(content: UiState.Content) = with(binding.bottomAppBar) {
+        setEnabledMenuItem(R.id.back, !content.state.isFirstTurn)
+        val icon = when (content.screenType) {
+            Default -> R.drawable.ic_default_screen
+            Mirrored -> R.drawable.ic_mirrored_screen
+        }
+        setIconMenuItem(R.id.screenType, icon)
     }
 
     private fun renderCards(state: DeckState) = with(binding) {
@@ -86,7 +101,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     }
 
     private fun renderScreenType(screenType: ScreenType) = with(binding) {
-        TransitionManager.beginDelayedTransition(continueBtn)
+        runScreenAnimation()
         secondaryPackCard.root.isVisible = screenType == Mirrored
         divider.isVisible = screenType == Mirrored
         mainPackCard.root.updateLayoutParams<ConstraintLayout.LayoutParams> {
@@ -101,6 +116,14 @@ class GameFragment : Fragment(R.layout.fmt_game) {
                 }
             }
         }
+    }
+
+    private fun runScreenAnimation() {
+        if (!isFistAppease) {
+            isFistAppease = true
+            return
+        }
+        TransitionManager.beginDelayedTransition(binding.continueBtn)
     }
 
     private fun renderCard(cardLayoutBinding: CardLayoutBinding, card: Card) =
