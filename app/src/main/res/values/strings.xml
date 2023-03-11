@@ -2,4 +2,7 @@
     <string name="app_name">Welcome To The Moon Companion</string>
     <string name="game_creation_title">Генерация колоды</string>
     <string name="create_deck">Создать колоду</string>
+    <string name="setting_back">Назад</string>
+    <string name="setting_screen_type">Тип экрана</string>
+    <string name="setting_close">Закрыть</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.example.welcometothemooncompanion.ui.game
 
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -9,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionManager
 import com.example.welcometothemooncompanion.R
 import com.example.welcometothemooncompanion.databinding.CardLayoutBinding
 import com.example.welcometothemooncompanion.databinding.FmtGameBinding
@@ -35,17 +35,25 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     }
 
     private fun setOnClickListeners() = with(binding) {
+        bottomAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.back -> {
+                    viewModel.onBackClicked()
+                    true
+                }
+                R.id.close -> {
+                    findNavController().popBackStack()
+                    true
+                }
+                R.id.screenType -> {
+                    viewModel.toggleScreenType()
+                    true
+                }
+                else -> false
+            }
+        }
         continueBtn.setOnClickListener {
             viewModel.onContinueClicked()
-        }
-        closeBtn.setOnClickListener {
-            findNavController().popBackStack()
-        }
-        backBtn.setOnClickListener {
-            viewModel.onBackClicked()
-        }
-        screenTypeBtn.setOnClickListener {
-            viewModel.toggleScreenType()
         }
     }
 
@@ -60,17 +68,8 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     }
 
     private fun renderContent(content: UiState.Content) = with(binding) {
-        renderScreenTypeButton(content.screenType)
         renderCards(content.state)
         renderScreenType(content.screenType)
-    }
-
-    private fun renderScreenTypeButton(screenType: ScreenType) {
-        val image = when (screenType) {
-            Default -> R.drawable.mirrored_screen
-            Mirrored -> R.drawable.default_screen
-        }
-        binding.screenTypeBtn.setImageResource(image)
     }
 
     private fun renderCards(state: DeckState) = with(binding) {
@@ -87,20 +86,18 @@ class GameFragment : Fragment(R.layout.fmt_game) {
     }
 
     private fun renderScreenType(screenType: ScreenType) = with(binding) {
-        TransitionManager.beginDelayedTransition(root)
+        TransitionManager.beginDelayedTransition(continueBtn)
         secondaryPackCard.root.isVisible = screenType == Mirrored
         divider.isVisible = screenType == Mirrored
         mainPackCard.root.updateLayoutParams<ConstraintLayout.LayoutParams> {
             when (screenType) {
                 Default -> {
                     topToTop = ConstraintLayout.LayoutParams.PARENT_ID
-                    topToBottom = ConstraintLayout.LayoutParams.UNSET
-                    matchConstraintPercentHeight = 0.45F
+                    height = ConstraintLayout.LayoutParams.WRAP_CONTENT
                 }
                 Mirrored -> {
-                    topToTop = ConstraintLayout.LayoutParams.UNSET
-                    topToBottom = guideline2.id
-                    matchConstraintPercentHeight = 1F
+                    topToTop = binding.divider.id
+                    height = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
                 }
             }
         }
