@@ -15,14 +15,11 @@ class CardRepository(
     private val assets: AssetManager,
     private val json: Json
 ) {
-    private lateinit var cardsDeferred: Deferred<List<Card>>
     private val scope = CoroutineScope(Dispatchers.Default)
 
-    fun init() {
-        cardsDeferred = scope.async {
-            assets.open(DECK_JSON_FILE_NAME).use {
-                json.decodeFromStream(it)
-            }
+    private val cardsDeferred: Deferred<List<Card>> = scope.async {
+        assets.open(DECK_JSON_FILE_NAME).use {
+            json.decodeFromStream(it)
         }
     }
 

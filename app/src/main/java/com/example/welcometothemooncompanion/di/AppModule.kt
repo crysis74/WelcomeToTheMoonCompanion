@@ -11,6 +11,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.createdAtStart
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
@@ -18,7 +19,9 @@ val appModule = module {
     single<Json> { Json }
     single<AssetManager> { androidContext().assets }
     viewModelOf(::GameViewModel)
-    singleOf(::CardRepository)
+    singleOf(::CardRepository) {
+        createdAtStart()
+    }
     singleOf(::DeckGenerator)
     single {
         PreferenceDataStoreFactory.create {
