@@ -7,6 +7,7 @@ import com.example.welcometothemooncompanion.decktools.DeckGenerator
 import com.example.welcometothemooncompanion.repository.CardRepository
 import com.example.welcometothemooncompanion.repository.GameSettingRepository
 import com.example.welcometothemooncompanion.ui.game.GameViewModel
+import com.example.welcometothemooncompanion.ui.gamecreation.GameCreationViewModel
 import kotlinx.coroutines.MainScope
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.koin.androidContext
@@ -30,4 +31,5 @@ val appModule = module {
     }
     singleOf(::GameSettingRepository)
     single { MainScope() }
+    viewModelOf(::GameCreationViewModel)
 }

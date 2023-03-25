@@ -42,7 +42,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
 
     private fun setOnClickListeners() = with(binding) {
         missionButton.setOnClickListener {
-            Toast.makeText(context, R.string.mission, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "in progress", Toast.LENGTH_SHORT).show()
         }
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {

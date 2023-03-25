@@ -2,9 +2,17 @@
     <string name="app_name">Welcome To The Moon Companion</string>
     <string name="app_name_title">Welcome To The Moon</string>
     <string name="game_creation_title">Deck generation</string>
-    <string name="create_deck">Create deck</string>
+    <string name="game_select_field_title">Select adventure:</string>
+    <string name="create_deck">Create</string>
     <string name="setting_back">Back</string>
     <string name="setting_screen_type">Screen type</string>
     <string name="setting_close">Close</string>
-    <string name="mission">Missions will be implement later</string>
+    <string name="adventure_1">1# THE LAUNCH</string>
+    <string name="adventure_2">2# THE JOURNEY</string>
+    <string name="adventure_3">3# THE COLONY</string>
+    <string name="adventure_4">4# THE MINE</string>
+    <string name="adventure_5">5# THE DOME</string>
+    <string name="adventure_6">6# THE VIRUS</string>
+    <string name="adventure_7">7# THE ESCAPE</string>
+    <string name="adventure_8">8# THE BATTLE</string>
 </resources>

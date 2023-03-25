@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Добро пожаловать на луну Компаньон</string>
+    <string name="app_name_title">Добро пожаловать на луну</string>
+    <string name="game_creation_title">Генератор колоды</string>
+    <string name="game_select_field_title">Выберите приключение:</string>
+    <string name="create_deck">Создать</string>
+    <string name="setting_back">Назад</string>
+    <string name="setting_screen_type">Тип экрана</string>
+    <string name="setting_close">Закрыть</string>
+    <string name="adventure_1">1# ЗАПУСК</string>
+    <string name="adventure_2">2# ПОЛЕТ</string>
+    <string name="adventure_3">3# КОЛОНИЯ</string>
+    <string name="adventure_4">4# ШАХТА</string>
+    <string name="adventure_5">5# КУПОЛ</string>
+    <string name="adventure_6">6# ВИРУС</string>
+    <string name="adventure_7">7# БЕГСТВО</string>
+    <string name="adventure_8">8# БИТВА</string>
+</resources>
