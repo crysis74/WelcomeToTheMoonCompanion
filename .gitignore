@@ -31,6 +31,7 @@ bin/AndroidManifest.xml
 
 # Local configuration file (sdk path, etc)
 local.properties:
+keystore.properties
 
 # Eclipse files
 .classpath
@@ -38,14 +39,11 @@ local.properties:
 
 # IDEA
 .idea
-*.iml
 /build.xml
-/local.properties
 /proguard_logs/
 
 # gradle
 **/build
-.gradle
 
 
 #enc
