@@ -29,7 +29,7 @@
         android:fontFamily="@font/mr_chargerg"
         android:gravity="center"
         android:text="@string/game_creation_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         app:layout_constraintBottom_toTopOf="@+id/generateButton"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.5"

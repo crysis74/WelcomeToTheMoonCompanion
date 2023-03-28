@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Добро пожаловать на луну Компаньон</string>
+    <string name="app_name">Лунный Компаньон</string>
     <string name="app_name_title">Добро пожаловать на луну</string>
-    <string name="game_creation_title">Генератор колоды</string>
+    <string name="game_creation_title">Компаньон</string>
     <string name="game_select_field_title">Выберите приключение:</string>
     <string name="create_deck">Создать</string>
     <string name="setting_back">Назад</string>

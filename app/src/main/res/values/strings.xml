@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Welcome To The Moon Companion</string>
+    <string name="app_name">Moon Companion</string>
     <string name="app_name_title">Welcome To The Moon</string>
-    <string name="game_creation_title">Deck generation</string>
+    <string name="game_creation_title">Companion</string>
     <string name="game_select_field_title">Select adventure:</string>
     <string name="create_deck">Create</string>
     <string name="setting_back">Back</string>
