@@ -15,4 +15,7 @@
     <string name="adventure_6">6# THE VIRUS</string>
     <string name="adventure_7">7# THE ESCAPE</string>
     <string name="adventure_8">8# THE BATTLE</string>
+    <string name="mission_a">A</string>
+    <string name="mission_b">B</string>
+    <string name="mission_c">C</string>
 </resources>

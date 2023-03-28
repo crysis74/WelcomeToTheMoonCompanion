@@ -1,0 +1,318 @@
+[
+  {
+    "fieldNumber": "1",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "3",
+        "otherPlaces": "2"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "4",
+        "otherPlaces": "2"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "3",
+        "otherPlaces": "2"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "3",
+        "otherPlaces": "2"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "2",
+        "otherPlaces": "1"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "3",
+        "otherPlaces": "2"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "2",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "9",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "10",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "11",
+        "otherPlaces": "6"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "12",
+        "otherPlaces": "6"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "11",
+        "otherPlaces": "6"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "9",
+        "otherPlaces": "5"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "3",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "12",
+        "otherPlaces": "6"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "12",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "9",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "9",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "8",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "9",
+        "otherPlaces": "5"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "4",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "9",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "8",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "10",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "11",
+        "otherPlaces": "6"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "10",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "8",
+        "otherPlaces": "3"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "5",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "6",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "8",
+        "otherPlaces": "3"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "8",
+        "otherPlaces": "3"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "11",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "12",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "10",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "10",
+        "otherPlaces": "4"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "7",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "10",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "7",
+        "otherPlaces": "3"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "9",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "10",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "10",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "10",
+        "otherPlaces": "5"
+      }
+    ]
+  },
+  {
+    "fieldNumber": "8",
+    "values": [
+      {
+        "type": "A",
+        "imageOrdinal": "1",
+        "firstPlace": "12",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "A",
+        "imageOrdinal": "2",
+        "firstPlace": "9",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "1",
+        "firstPlace": "9",
+        "otherPlaces": "5"
+      },
+      {
+        "type": "B",
+        "imageOrdinal": "2",
+        "firstPlace": "11",
+        "otherPlaces": "6"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "1",
+        "firstPlace": "10",
+        "otherPlaces": "4"
+      },
+      {
+        "type": "C",
+        "imageOrdinal": "2",
+        "firstPlace": "10",
+        "otherPlaces": "6"
+      }
+    ]
+  }
+]

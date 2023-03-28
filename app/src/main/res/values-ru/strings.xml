@@ -16,4 +16,7 @@
     <string name="adventure_6">6# ВИРУС</string>
     <string name="adventure_7">7# БЕГСТВО</string>
     <string name="adventure_8">8# БИТВА</string>
+    <string name="mission_a">А</string>
+    <string name="mission_b">Б</string>
+    <string name="mission_c">В</string>
 </resources>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/gameCreationFragment">
-
     <fragment
         android:id="@+id/gameCreationFragment"
         android:name="com.example.welcometothemooncompanion.ui.gamecreation.GameCreationFragment"
@@ -14,10 +13,18 @@
             android:id="@+id/toGameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
-
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.welcometothemooncompanion.ui.game.GameFragment"
         android:label="GameFragment"
-        tools:layout="@layout/fmt_game" />
+        tools:layout="@layout/fmt_game">
+        <action
+            android:id="@+id/action_gameFragment_to_missionBottomSheet"
+            app:destination="@id/missionBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/missionBottomSheet"
+        android:name="com.example.welcometothemooncompanion.ui.mission.MissionBottomSheet"
+        android:label="MissionBottomSheet"
+        tools:layout="@layout/btm_mission" />
 </navigation>

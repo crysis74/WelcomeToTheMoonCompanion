@@ -3,9 +3,8 @@ package com.example.welcometothemooncompanion.decktools
 import com.example.welcometothemooncompanion.domain.CardDeck
 import com.example.welcometothemooncompanion.repository.CardRepository
 
-class DeckGenerator(
-    private val cardRepository: CardRepository
-) {
+class DeckGenerator(private val cardRepository: CardRepository) {
+
     suspend fun generateDeck(): CardDeck {
         val cards = cardRepository.getCards().shuffled()
         val chunkedCards = cards.chunked(COLUMN_CARD_SIZE)

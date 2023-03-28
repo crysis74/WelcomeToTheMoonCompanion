@@ -3,7 +3,6 @@ package com.example.welcometothemooncompanion.ui.game
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -19,6 +18,7 @@ import com.example.welcometothemooncompanion.domain.CardType.*
 import com.example.welcometothemooncompanion.domain.ScreenType
 import com.example.welcometothemooncompanion.domain.ScreenType.Default
 import com.example.welcometothemooncompanion.domain.ScreenType.Mirrored
+import com.example.welcometothemooncompanion.ui.game.GameFragmentDirections.Companion.actionGameFragmentToMissionBottomSheet
 import com.example.welcometothemooncompanion.ui.game.GameViewModel.UiState
 import com.example.welcometothemooncompanion.util.observe
 import com.example.welcometothemooncompanion.util.setEnabledMenuItem
@@ -42,7 +42,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
 
     private fun setOnClickListeners() = with(binding) {
         missionButton.setOnClickListener {
-            Toast.makeText(context, "in progress", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(actionGameFragmentToMissionBottomSheet())
         }
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
