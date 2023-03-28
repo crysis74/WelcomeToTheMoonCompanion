@@ -2,11 +2,11 @@ package com.example.welcometothemooncompanion.ui.gamecreation
 
 import android.os.Bundle
 import android.view.View
-import android.viewbinding.library.fragment.viewBinding
 import android.widget.RadioButton
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.welcometothemooncompanion.R
 import com.example.welcometothemooncompanion.databinding.FmtGameCreationBinding
 import com.example.welcometothemooncompanion.ui.gamecreation.GameCreationViewModel.UiState
@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameCreationFragment : Fragment(R.layout.fmt_game_creation) {
 
-    private val binding: FmtGameCreationBinding by viewBinding()
+    private val binding: FmtGameCreationBinding by viewBinding(FmtGameCreationBinding::bind)
     private val viewModel: GameCreationViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

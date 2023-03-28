@@ -6,12 +6,12 @@ import android.animation.AnimatorSet
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
-import android.viewbinding.library.fragment.viewBinding
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.welcometothemooncompanion.R
 import com.example.welcometothemooncompanion.databinding.AnimatedMissionLayoutBinding
 import com.example.welcometothemooncompanion.databinding.BtmMissionBinding
@@ -32,7 +32,7 @@ import org.koin.androidx.navigation.koinNavGraphViewModel
 
 class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
 
-    private val binding: BtmMissionBinding by viewBinding()
+    private val binding: BtmMissionBinding by viewBinding(BtmMissionBinding::bind)
     private val viewModel: MissionViewModel by koinNavGraphViewModel(R.id.gameFragment)
     private val animationGenerator: MissionBottomSheetAnimationGenerator by inject()
 
