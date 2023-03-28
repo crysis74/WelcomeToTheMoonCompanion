@@ -137,11 +137,11 @@ class GameFragment : Fragment(R.layout.fmt_game) {
         }
 
     private fun getCard(type: CardType) = when (type) {
-        Robot -> R.drawable.robot
-        Planning -> R.drawable.planning
-        Water -> R.drawable.water
-        Plant -> R.drawable.plant
-        Energy -> R.drawable.energy
-        Astronaut -> R.drawable.astronaut
+        Robot -> R.drawable.ic_card_robot
+        Planning -> R.drawable.ic_card_planning
+        Water -> R.drawable.ic_card_water
+        Plant -> R.drawable.ic_card_plant
+        Energy -> R.drawable.ic_card_energy
+        Astronaut -> R.drawable.ic_card_astronaut
     }
 }
