@@ -10,9 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven("https://jitpack.io")
     }
 }
 
-rootProject.name = "Welcome To The Moon Companion"
-include ':app'
+rootProject.name = "Moon Companion"
+include(":app")
