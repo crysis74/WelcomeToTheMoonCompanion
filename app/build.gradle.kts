@@ -15,6 +15,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
+@Suppress("UnstableApiUsage")
 android {
     signingConfigs {
         create("config") {
@@ -49,13 +50,6 @@ android {
             signingConfig = signingConfigs.getByName("config")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
     buildFeatures {
         viewBinding = true
     }
@@ -67,20 +61,20 @@ android {
 }
 
 dependencies {
-    val koin_version = "3.4.0"
-    val nav_version = "2.5.3"
-    val fragment_version = "1.5.6"
+    val koinVersion = "3.4.0"
+    val navVersion = "2.5.3"
+    val fragmentVersion = "1.5.6"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.activity:activity:1.7.0")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.10.0")
     implementation("com.google.android.material:material:1.7.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("io.insert-koin:koin-android:$koin_version")
-    implementation("io.insert-koin:koin-androidx-navigation:$koin_version")
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-navigation:$koinVersion")
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.8")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     testImplementation("junit:junit:4.13.2")
