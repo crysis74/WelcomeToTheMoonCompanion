@@ -6,7 +6,7 @@
     app:startDestination="@id/gameCreationFragment">
     <fragment
         android:id="@+id/gameCreationFragment"
-        android:name="com.example.welcometothemooncompanion.ui.gamecreation.GameCreationFragment"
+        android:name="ru.bepis.mooncompanion.ui.gamecreation.GameCreationFragment"
         android:label="GameCreationFragment"
         tools:layout="@layout/fmt_game_creation">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.welcometothemooncompanion.ui.game.GameFragment"
+        android:name="ru.bepis.mooncompanion.ui.game.GameFragment"
         android:label="GameFragment"
         tools:layout="@layout/fmt_game">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <dialog
         android:id="@+id/missionBottomSheet"
-        android:name="com.example.welcometothemooncompanion.ui.mission.MissionBottomSheet"
+        android:name="ru.bepis.mooncompanion.ui.mission.MissionBottomSheet"
         android:label="MissionBottomSheet"
         tools:layout="@layout/btm_mission" />
 </navigation>

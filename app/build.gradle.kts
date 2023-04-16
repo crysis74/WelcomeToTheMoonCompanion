@@ -25,11 +25,11 @@ android {
             keyPassword = keystoreProperties["keyPassword"] as String
         }
     }
-    namespace = "com.example.welcometothemooncompanion"
+    namespace = "ru.bepis.mooncompanion"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.welcometothemooncompanion"
+        applicationId = "ru.bepis.mooncompanion"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
