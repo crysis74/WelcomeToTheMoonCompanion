@@ -5,13 +5,13 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
-import ru.bepis.mooncompanion.domain.ScreenType
-import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.IS_DEFAULT_SCREEN_TYPE
-import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.SELECTED_GAME_FIELD
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import ru.bepis.mooncompanion.domain.ScreenType
+import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.IS_DEFAULT_SCREEN_TYPE
+import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.SELECTED_GAME_FIELD
 
 class GameSettingRepository(
     private val dataStore: DataStore<Preferences>,

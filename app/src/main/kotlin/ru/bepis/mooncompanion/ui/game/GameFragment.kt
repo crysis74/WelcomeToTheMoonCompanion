@@ -9,12 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.bepis.mooncompanion.R
 import ru.bepis.mooncompanion.databinding.CardLayoutBinding
 import ru.bepis.mooncompanion.databinding.FmtGameBinding
 import ru.bepis.mooncompanion.domain.Card
 import ru.bepis.mooncompanion.domain.CardType
-import ru.bepis.mooncompanion.domain.CardType.*
+import ru.bepis.mooncompanion.domain.CardType.Astronaut
+import ru.bepis.mooncompanion.domain.CardType.Energy
+import ru.bepis.mooncompanion.domain.CardType.Planning
+import ru.bepis.mooncompanion.domain.CardType.Plant
+import ru.bepis.mooncompanion.domain.CardType.Robot
+import ru.bepis.mooncompanion.domain.CardType.Water
 import ru.bepis.mooncompanion.domain.ScreenType
 import ru.bepis.mooncompanion.domain.ScreenType.Default
 import ru.bepis.mooncompanion.domain.ScreenType.Mirrored
@@ -23,7 +29,6 @@ import ru.bepis.mooncompanion.ui.game.GameViewModel.UiState
 import ru.bepis.mooncompanion.util.observe
 import ru.bepis.mooncompanion.util.setEnabledMenuItem
 import ru.bepis.mooncompanion.util.setIconMenuItem
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameFragment : Fragment(R.layout.fmt_game) {
 
@@ -50,14 +55,17 @@ class GameFragment : Fragment(R.layout.fmt_game) {
                     viewModel.onBackClicked()
                     true
                 }
+
                 R.id.close -> {
                     findNavController().popBackStack()
                     true
                 }
+
                 R.id.screenType -> {
                     viewModel.toggleScreenType()
                     true
                 }
+
                 else -> false
             }
         }
@@ -72,6 +80,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
                 binding.root.animate().alpha(1f).duration = 250
                 renderContent(state)
             }
+
             UiState.Loading -> return
         }
     }
@@ -114,6 +123,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
                     topToTop = ConstraintLayout.LayoutParams.PARENT_ID
                     height = ConstraintLayout.LayoutParams.WRAP_CONTENT
                 }
+
                 Mirrored -> {
                     topToTop = binding.divider.id
                     height = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT

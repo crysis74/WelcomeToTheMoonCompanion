@@ -1,7 +1,6 @@
 package ru.bepis.mooncompanion.repository
 
 import android.content.res.AssetManager
-import ru.bepis.mooncompanion.domain.Card
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -9,6 +8,7 @@ import kotlinx.coroutines.async
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
+import ru.bepis.mooncompanion.domain.Card
 
 @OptIn(ExperimentalSerializationApi::class)
 class CardRepository(

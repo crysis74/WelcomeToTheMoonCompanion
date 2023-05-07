@@ -2,10 +2,10 @@ package ru.bepis.mooncompanion.ui.gamecreation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ru.bepis.mooncompanion.repository.GameSettingRepository
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import ru.bepis.mooncompanion.repository.GameSettingRepository
 
 class GameCreationViewModel(
     private val gameSettingRepository: GameSettingRepository

@@ -1,9 +1,9 @@
 package ru.bepis.mooncompanion.ui.game
 
+import kotlinx.coroutines.flow.MutableStateFlow
 import ru.bepis.mooncompanion.decktools.DeckGenerator.Companion.shuffleDeck
 import ru.bepis.mooncompanion.domain.Card
 import ru.bepis.mooncompanion.domain.CardDeck
-import kotlinx.coroutines.flow.MutableStateFlow
 
 data class DeckState(
     val firstColumn: Card,

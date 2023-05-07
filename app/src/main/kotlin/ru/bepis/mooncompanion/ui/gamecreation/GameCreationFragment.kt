@@ -7,13 +7,17 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.bepis.mooncompanion.R
 import ru.bepis.mooncompanion.databinding.FmtGameCreationBinding
 import ru.bepis.mooncompanion.ui.gamecreation.GameCreationViewModel.UiState
 import ru.bepis.mooncompanion.util.isCheckedChangeFlow
 import ru.bepis.mooncompanion.util.observe
-import kotlinx.coroutines.flow.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameCreationFragment : Fragment(R.layout.fmt_game_creation) {
 
@@ -37,6 +41,7 @@ class GameCreationFragment : Fragment(R.layout.fmt_game_creation) {
                 val checkedId = findGameFieldByNumber(state.value)
                 adventureRadioButtons.first { checkedId == it.id }.isChecked = true
             }
+
             UiState.NoInfo -> return
         }
     }

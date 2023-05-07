@@ -2,13 +2,13 @@ package ru.bepis.mooncompanion.ui.game
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ru.bepis.mooncompanion.decktools.DeckGenerator
-import ru.bepis.mooncompanion.domain.ScreenType
-import ru.bepis.mooncompanion.repository.GameSettingRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
+import ru.bepis.mooncompanion.decktools.DeckGenerator
+import ru.bepis.mooncompanion.domain.ScreenType
+import ru.bepis.mooncompanion.repository.GameSettingRepository
 
 class GameViewModel(
     private val deckGenerator: DeckGenerator,
