@@ -3,16 +3,18 @@ package ru.bepis.mooncompanion.ui.mission
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import ru.bepis.mooncompanion.decktools.MissionsGenerator
 import ru.bepis.mooncompanion.domain.Mission
 import ru.bepis.mooncompanion.domain.MissionPoint
 import ru.bepis.mooncompanion.domain.MissionType
-import ru.bepis.mooncompanion.domain.MissionType.*
+import ru.bepis.mooncompanion.domain.MissionType.A
+import ru.bepis.mooncompanion.domain.MissionType.B
+import ru.bepis.mooncompanion.domain.MissionType.C
 import ru.bepis.mooncompanion.repository.GameSettingRepository
 import ru.bepis.mooncompanion.util.update
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 
 class MissionViewModel(
     private val gameSettingRepository: GameSettingRepository,
@@ -56,6 +58,7 @@ data class MissionItem(
     val firstPlace: MissionPoint,
     val otherPlaces: MissionPoint,
     val type: MissionType,
+    val description: String,
     val isCompleted: Boolean = false
 )
 
@@ -64,4 +67,5 @@ fun Mission.toMissionItem() = MissionItem(
     firstPlace = firstPlace,
     otherPlaces = otherPlaces,
     type = type,
+    description = description
 )

@@ -6,37 +6,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "3",
-        "otherPlaces": "2"
+        "otherPlaces": "2",
+        "description": "Полностью пронумеруйте все 3 уровня звездолёта «Экипаж звездолёта» и «Система водообеспечения»."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "4",
-        "otherPlaces": "2"
+        "otherPlaces": "2",
+        "description": "Полностью пронумеруйте все 3 уровня звездолёта «Инженерный отдел» и «Центр управления»."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "3",
-        "otherPlaces": "2"
+        "otherPlaces": "2",
+        "description": "Полностью пронумеруйте уровень звездолёта «Энергоблок»."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "3",
-        "otherPlaces": "2"
+        "otherPlaces": "2",
+        "description": "Полностью пронумеруйте уровни звездолёта «Теплицы» и «Универсальный уровень»."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "2",
-        "otherPlaces": "1"
+        "otherPlaces": "1",
+        "description": "Впишите 10 «Х» при помощи бонуса «Автопогрузка»."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "3",
-        "otherPlaces": "2"
+        "otherPlaces": "2",
+        "description": "Обведите 5 ячеек системных ошибок (после выполнения этой миссии вы сможете их зачеркнуть)."
       }
     ]
   },
@@ -47,37 +53,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "9",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Обведите множитель на 3 различных космических станциях, которые соединены с вашим звездолётом роботами (все роботы должны быть обведены)."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "10",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Обведите все растения на 2 космических станциях. При этом роботы, ведущие к ним, могут быть не обведены."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "11",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "При помощи эффекта «Энергоблок» создайте на своей траектории 2 отрезка из 6 ячеек и заполните их целиком."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "12",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "При помощи эффекта «Энергоблок» создайте на своей траектории 3 отрезка — 1 отрезок из 6 ячеек, 1 отрезок из 4 ячеек и 1 отрезок из 2 ячеек — и заполните их целиком."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "11",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "Обведите 4 резервуара с водой, расположенных подряд."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "9",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Обведите 6 резервуаров с водой."
       }
     ]
   },
@@ -88,37 +100,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "12",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "Пронумеруйте все жилые модули в 3 любых вертикальных рядах."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "12",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Пронумеруйте все жилые модули в 3 любых горизонтальных рядах."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "9",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Обведите все радиотелескопы в 2 любых кварталах."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "9",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "С помощью эффекта «Инженерный отдел» соедините обсерваторию со звездолётом сетью тоннелей."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "8",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Обведите 10 растений в теплицах."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "9",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Обведите все резервуары с водой в 2 любых кварталах."
       }
     ]
   },
@@ -129,37 +147,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "9",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Извлеките ресурсы из 4 соседних шахт."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "8",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Извлеките ресурсы из 5 шахт."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "10",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Активируйте или модернизируйте суммарно 6 любых производств (теплицу / водохранилище / заводы / центры контроля или планирования / центры оптимизации)."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "11",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "Активируйте 5 центров оптимизации."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "10",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Обведите 5 ячеек с водой в шахтах (неважно, извлечены ресурсы или нет)."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "8",
-        "otherPlaces": "3"
+        "otherPlaces": "3",
+        "description": "Обведите 8 растений в шахтах (неважно, извлечены ресурсы или нет)."
       }
     ]
   },
@@ -168,27 +192,33 @@
     "values": [
       {
         "type": "A",
-        "imageOrdinal": "1"
+        "imageOrdinal": "1",
+        "description": "Заполните все ячейки в одном небоскрёбе."
       },
       {
         "type": "A",
-        "imageOrdinal": "2"
+        "imageOrdinal": "2",
+        "description": "Заполните верхний уровень двух небоскрёбов."
       },
       {
         "type": "B",
-        "imageOrdinal": "1"
+        "imageOrdinal": "1",
+        "description": "Обведите по крайней мере 2 значка (2 растения или 1 растение + 1 вода) на любых трёх уровнях исследовательской башни."
       },
       {
         "type": "B",
-        "imageOrdinal": "2"
+        "imageOrdinal": "2",
+        "description": "Обведите все 3 значка (2 растения + 1 вода) на любых двух уровнях исследовательской башни."
       },
       {
         "type": "C",
-        "imageOrdinal": "1"
+        "imageOrdinal": "1",
+        "description": "Постройте все секции купола."
       },
       {
         "type": "C",
-        "imageOrdinal": "2"
+        "imageOrdinal": "2",
+        "description": "Впишите «Х» в 4 ячейки при помощи эффекта «Центр управления»."
       }
     ]
   },
@@ -199,37 +229,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "8",
-        "otherPlaces": "3"
+        "otherPlaces": "3",
+        "description": "Эвакуируйте 2 любых жилых блока. Они могут быть частично или даже полностью заражены."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "8",
-        "otherPlaces": "3"
+        "otherPlaces": "3",
+        "description": "Эвакуируйте все жилые блоки на одном уровне. Они могут быть частично или даже полностью заражены."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "11",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Закройте на карантин 3 жилых блока, перекрыв все проходы, ведущие к каждому из них."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "12",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Закройте на карантин жилые блоки с зелёным вирусом и с синим вирусом, перекрыв все ведущие к ним проходы."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "10",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Обведите все энергоблоки на 2 любых уровнях."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "10",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Обведите все значки растений в теплицах и резервуары с водой на 2 любых уровнях."
       }
     ]
   },
@@ -240,37 +276,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "10",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Пронумеруйте 3 любые теплицы и обведите в каждой по 3 растения."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "7",
-        "otherPlaces": "3"
+        "otherPlaces": "3",
+        "description": "Пронумеруйте теплицу звездолёта на самом высоком уровне и обведите в ней 3 растения."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "9",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Целиком заполните суммарно 7 модулей звездолётов."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "10",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Целиком заполните 3 звездолёта."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "10",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Обведите все резервуары с водой у 3 любых звездолётов."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "10",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Обведите все энергоблоки в двигателе у 3 любых звездолётов."
       }
     ]
   },
@@ -281,37 +323,43 @@
         "type": "A",
         "imageOrdinal": "1",
         "firstPlace": "12",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "Захватите 4 планеты на одном поле."
       },
       {
         "type": "A",
         "imageOrdinal": "2",
         "firstPlace": "9",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Захватите по 1 планете каждого типа на одном поле."
       },
       {
         "type": "B",
         "imageOrdinal": "1",
         "firstPlace": "9",
-        "otherPlaces": "5"
+        "otherPlaces": "5",
+        "description": "С помощью эффекта «Инженерный отдел» впишите свой символ в 7 астероидов на одном поле."
       },
       {
         "type": "B",
         "imageOrdinal": "2",
         "firstPlace": "11",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "Увеличьте ценность каждого типа планет дважды на одном поле."
       },
       {
         "type": "C",
         "imageOrdinal": "1",
         "firstPlace": "10",
-        "otherPlaces": "4"
+        "otherPlaces": "4",
+        "description": "Зачеркните 6 значков растений и 4 значка воды в зоне подсчёта очков на одном поле."
       },
       {
         "type": "C",
         "imageOrdinal": "2",
         "firstPlace": "10",
-        "otherPlaces": "6"
+        "otherPlaces": "6",
+        "description": "С помощью эффекта «Центр управления» впишите свой символ в 4 разных спутника на одном поле."
       }
     ]
   }

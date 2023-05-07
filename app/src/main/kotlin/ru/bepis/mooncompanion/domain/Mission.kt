@@ -12,7 +12,8 @@ data class Mission(
     @DrawableRes
     val imageRes: Int,
     val firstPlace: MissionPoint,
-    val otherPlaces: MissionPoint
+    val otherPlaces: MissionPoint,
+    val description: String
 )
 
 enum class MissionType {
@@ -35,5 +36,6 @@ fun MissionResp.MissionRespExtra.toMission(
     type = type,
     imageRes = imageRes,
     firstPlace = firstPlace?.let { Number(it) } ?: Image(R.drawable.ic_star_first_place),
-    otherPlaces = otherPlaces?.let { Number(it) } ?: Image(R.drawable.ic_star_second_places)
+    otherPlaces = otherPlaces?.let { Number(it) } ?: Image(R.drawable.ic_star_second_places),
+    description = description
 )

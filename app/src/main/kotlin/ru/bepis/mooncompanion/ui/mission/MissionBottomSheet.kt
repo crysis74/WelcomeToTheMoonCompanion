@@ -11,17 +11,8 @@ import androidx.annotation.StringRes
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import ru.bepis.mooncompanion.R
-import ru.bepis.mooncompanion.databinding.AnimatedMissionLayoutBinding
-import ru.bepis.mooncompanion.databinding.BtmMissionBinding
-import ru.bepis.mooncompanion.domain.MissionPoint
-import ru.bepis.mooncompanion.domain.MissionType
-import ru.bepis.mooncompanion.domain.MissionType.*
-import ru.bepis.mooncompanion.util.AnimationState
-import ru.bepis.mooncompanion.util.animationFlow
-import ru.bepis.mooncompanion.util.hideSystemUI
-import ru.bepis.mooncompanion.util.observe
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -29,6 +20,20 @@ import kotlinx.coroutines.flow.combineTransform
 import kotlinx.coroutines.flow.filterNotNull
 import org.koin.android.ext.android.inject
 import org.koin.androidx.navigation.koinNavGraphViewModel
+import ru.bepis.mooncompanion.R
+import ru.bepis.mooncompanion.databinding.AnimatedMissionLayoutBinding
+import ru.bepis.mooncompanion.databinding.BtmMissionBinding
+import ru.bepis.mooncompanion.domain.MissionPoint
+import ru.bepis.mooncompanion.domain.MissionType
+import ru.bepis.mooncompanion.domain.MissionType.A
+import ru.bepis.mooncompanion.domain.MissionType.B
+import ru.bepis.mooncompanion.domain.MissionType.C
+import ru.bepis.mooncompanion.util.AnimationState
+import ru.bepis.mooncompanion.util.animationFlow
+import ru.bepis.mooncompanion.util.hideSystemUI
+import ru.bepis.mooncompanion.util.observe
+import ru.bepis.mooncompanion.util.requireBottomSheetDialog
+import ru.bepis.mooncompanion.util.requireRootView
 
 class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
 
@@ -48,12 +53,28 @@ class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
         super.onViewCreated(view, savedInstanceState)
         initMissionLayouts()
         initMissionLayoutViews()
+        initDescriptionSwitch()
         combineTransform(
             viewModel.uiState.filterNotNull(),
             isAllAnimationsIdleFlow
         ) { state, isAllAnimationsIdle ->
             if (isAllAnimationsIdle) emit(state)
         }.observe(viewLifecycleOwner, ::renderContent)
+    }
+
+    private fun initDescriptionSwitch() {
+        setDescriptionVisibility(binding.descriptionSwitch.isChecked)
+        binding.descriptionSwitch.setOnCheckedChangeListener { _, isChecked ->
+            animateBottomSheet {
+                setDescriptionVisibility(isChecked)
+            }
+        }
+    }
+
+    private fun setDescriptionVisibility(isVisible: Boolean) {
+        missionLayouts
+            .map { it.value.description }
+            .forEach { it.isVisible = isVisible }
     }
 
     override fun onDestroyView() {
@@ -74,7 +95,7 @@ class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
     }
 
     private fun View.setGoodForAnimationCameraDistance() {
-        val scale = requireContext().resources.displayMetrics.density
+        val scale = resources.displayMetrics.density
         val cameraDist = CAMERA_DIST_VALUE * scale
         cameraDistance = cameraDist
     }
@@ -111,6 +132,7 @@ class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
                 img.setImageResource(missionItem.imageRes)
                 firstPlacePoint.setMissionPoint(missionItem.firstPlace)
                 otherPlacesPoint.setMissionPoint(missionItem.otherPlaces)
+                description.text = missionItem.description
             }
         }
     }
@@ -186,6 +208,13 @@ class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
             }
         }
         missionLayouts.addAll(list)
+    }
+
+    private fun animateBottomSheet(action: () -> Unit) {
+        val designBottomSheet = requireBottomSheetDialog().requireRootView()
+        TransitionManager.beginDelayedTransition(designBottomSheet)
+        action()
+        TransitionManager.endTransitions(binding.root)
     }
 
     private data class MissionLayout(

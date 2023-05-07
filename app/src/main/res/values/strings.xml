@@ -18,4 +18,5 @@
     <string name="mission_a">A</string>
     <string name="mission_b">B</string>
     <string name="mission_c">C</string>
+    <string name="mission_description_title">Description</string>
 </resources>

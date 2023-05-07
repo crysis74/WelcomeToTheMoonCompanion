@@ -1,7 +1,7 @@
 package ru.bepis.mooncompanion.repository.model
 
-import ru.bepis.mooncompanion.domain.MissionType
 import kotlinx.serialization.Serializable
+import ru.bepis.mooncompanion.domain.MissionType
 
 @Serializable
 data class MissionResp(
@@ -12,6 +12,7 @@ data class MissionResp(
     data class MissionRespExtra(
         val type: MissionType,
         val imageOrdinal: Int,
+        val description: String,
         val firstPlace: Int? = null,
         val otherPlaces: Int? = null
     )
