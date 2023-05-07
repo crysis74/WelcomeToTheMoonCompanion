@@ -9,7 +9,7 @@ plugins {
     id("kotlin-parcelize")
 }
 
-val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystorePropertiesFile: File = rootProject.file("keystore.properties")
 val keystoreProperties = Properties()
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
@@ -53,10 +53,17 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.majorVersion
     }
 }
 
@@ -65,7 +72,7 @@ dependencies {
     val navVersion = "2.5.3"
     val fragmentVersion = "1.5.6"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.activity:activity:1.7.0")
+    implementation("androidx.activity:activity:1.7.1")
     implementation("androidx.core:core-ktx:1.10.0")
     implementation("com.google.android.material:material:1.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
