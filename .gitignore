@@ -9,7 +9,7 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
-/app/release/output-metadata.json
+/app/release
 /captures
 .externalNativeBuild
 .cxx
