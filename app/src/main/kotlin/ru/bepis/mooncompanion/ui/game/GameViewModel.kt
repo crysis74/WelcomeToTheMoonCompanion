@@ -40,6 +40,6 @@ class GameViewModel(
 
     sealed interface UiState {
         data class Content(val state: DeckState, val screenType: ScreenType) : UiState
-        object Loading : UiState
+        data object Loading : UiState
     }
 }

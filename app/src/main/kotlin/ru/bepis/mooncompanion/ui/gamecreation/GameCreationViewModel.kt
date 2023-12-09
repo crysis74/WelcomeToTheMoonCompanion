@@ -26,6 +26,6 @@ class GameCreationViewModel(
     sealed interface UiState {
         @JvmInline
         value class SelectedGameField(val value: Int) : UiState
-        object NoInfo : UiState
+        data object NoInfo : UiState
     }
 }
