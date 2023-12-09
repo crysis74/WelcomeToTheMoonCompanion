@@ -3,91 +3,98 @@ package ru.bepis.mooncompanion.ui.gamecreation
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.drop
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.merge
-import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.bepis.mooncompanion.R
 import ru.bepis.mooncompanion.databinding.FmtGameCreationBinding
+import ru.bepis.mooncompanion.databinding.RbtGameFieldBinding
+import ru.bepis.mooncompanion.ui.gamecreation.GameCreationViewModel.GameField
 import ru.bepis.mooncompanion.ui.gamecreation.GameCreationViewModel.UiState
-import ru.bepis.mooncompanion.util.isCheckedChangeFlow
+import ru.bepis.mooncompanion.util.asString
 import ru.bepis.mooncompanion.util.observe
 
 class GameCreationFragment : Fragment(R.layout.fmt_game_creation) {
 
+    private data class GameFieldViewWrapper(val field: GameField, val view: RadioButton)
+
     private val binding: FmtGameCreationBinding by viewBinding(FmtGameCreationBinding::bind)
     private val viewModel: GameCreationViewModel by viewModel()
+    private var isContentAppearedAtFirstFragmentViewCreation: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.generateButton.setOnClickListener {
             findNavController().navigate(GameCreationFragmentDirections.toGameFragment())
         }
-        adventureChangeFlow.observe(viewLifecycleOwner, viewModel::saveGameField)
         viewModel.uiState.observe(viewLifecycleOwner, ::renderContent)
     }
 
     private fun renderContent(state: UiState) = with(binding) {
-        generateButton.isEnabled = state is UiState.SelectedGameField
-        adventureRadioButtons.forEach { it.isEnabled = state is UiState.SelectedGameField }
+        generateButton.isEnabled = state is UiState.Content
         when (state) {
-            is UiState.SelectedGameField -> {
-                val checkedId = findGameFieldByNumber(state.value)
-                adventureRadioButtons.first { checkedId == it.id }.isChecked = true
+            is UiState.Content -> {
+                if (isContentAppearedAtFirstFragmentViewCreation) {
+                    // no need to recreate view hierarchy and reselect button,
+                    // because of radio buttons is statefull components and field don't changed.
+                    return@with
+                }
+                val gameFieldWrappers = generateGameFieldWrappers(state)
+                addGameFieldViewsOnScreen(gameFieldWrappers)
+                subscribeOnGameFieldChanging(gameFieldWrappers)
+                isContentAppearedAtFirstFragmentViewCreation = true
             }
 
-            UiState.NoInfo -> return
+            UiState.NoInfo -> return@with
         }
     }
 
-    private val adventureChangeFlow: Flow<Int>
-        get() = adventureRadioButtons
-            .map(::isCheckedChangeFlow)
-            .merge()
-            .drop(1)
-            .onEach { buttonId ->
-                adventureRadioButtons
-                    .filter { it.id != buttonId }
-                    .forEach { it.isChecked = false }
-            }
-            .map { findGameFieldByIdRes(it) }
-
-    private val adventureRadioButtons: List<RadioButton>
-        get() = with(binding) {
-            listOf(
-                adventure1Button,
-                adventure2Button,
-                adventure3Button,
-                adventure4Button,
-                adventure5Button,
-                adventure6Button,
-                adventure7Button,
-                adventure8Button
-            )
+    private fun generateGameFieldWrappers(state: UiState.Content): List<GameFieldViewWrapper> =
+        state.fields.map { gameField ->
+            val gameFieldView = generateGameFieldView(gameField, state.selectedGameFieldId)
+            GameFieldViewWrapper(gameField, gameFieldView)
         }
 
+    private fun generateGameFieldView(gameField: GameField, selectedFieldId: Int): RadioButton =
+        RbtGameFieldBinding.inflate(layoutInflater).root.apply {
+            text = gameField.name.asString(this@GameCreationFragment)
+            isChecked = gameField.id == selectedFieldId
+        }
+
+    private fun addGameFieldViewsOnScreen(buttonFields: List<GameFieldViewWrapper>) {
+        buttonFields.map(GameFieldViewWrapper::view).forEach(binding.fields::addView)
+    }
+
+    private fun subscribeOnGameFieldChanging(wrappers: List<GameFieldViewWrapper>) {
+        wrappers
+            .map {
+                it.isGameFieldSelectedFlow()
+            }
+            .merge()
+            .observe(viewLifecycleOwner) { selectedField ->
+                wrappers.filter { it.field.id != selectedField.id }
+                    .forEach { it.view.isChecked = false }
+                viewModel.saveGameField(selectedField.id)
+            }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        isContentAppearedAtFirstFragmentViewCreation = false
+    }
+
     companion object {
-        private val gameFieldIdMapper = listOf(
-            1 to R.id.adventure1Button,
-            2 to R.id.adventure2Button,
-            3 to R.id.adventure3Button,
-            4 to R.id.adventure4Button,
-            5 to R.id.adventure5Button,
-            6 to R.id.adventure6Button,
-            7 to R.id.adventure7Button,
-            8 to R.id.adventure8Button
-        )
-
-        private fun findGameFieldByIdRes(@IdRes idRes: Int) =
-            gameFieldIdMapper.first { it.second == idRes }.first
-
-        private fun findGameFieldByNumber(gameFieldNumber: Int) =
-            gameFieldIdMapper.first { it.first == gameFieldNumber }.second
+        private fun GameFieldViewWrapper.isGameFieldSelectedFlow(): Flow<GameField> =
+            callbackFlow {
+                view.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) trySend(field)
+                }
+                awaitClose { view.setOnCheckedChangeListener(null) }
+            }
     }
 }

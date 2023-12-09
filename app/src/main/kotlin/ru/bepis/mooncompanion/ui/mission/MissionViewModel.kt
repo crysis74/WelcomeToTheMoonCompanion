@@ -25,7 +25,7 @@ class MissionViewModel(
 
     init {
         viewModelScope.launch {
-            val gameField = gameSettingRepository.selectedGameField.first()
+            val gameField = gameSettingRepository.selectedGameField.first() ?: return@launch
             updateUiState(missionsGenerator.generateMissions(gameField)
                 .mapValues { entry -> entry.value.toMissionItem() }
                 .toMissionItems()
@@ -41,7 +41,7 @@ class MissionViewModel(
 
     private fun updateUiState(state: List<MissionItem>) {
         require(state.size == 3)
-        require(state.map { it.type }.containsAll(MissionType.values().toList()))
+        require(state.map { it.type }.containsAll(MissionType.entries))
         uiState.value = state
     }
 

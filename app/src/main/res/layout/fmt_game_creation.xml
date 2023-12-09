@@ -57,74 +57,10 @@
         app:layout_constraintTop_toBottomOf="@+id/selectGameField">
 
         <LinearLayout
+            android:id="@+id/fields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/adventure1Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_1"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure2Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_2"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure3Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_3"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure4Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_4"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure5Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_5"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure6Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_6"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure7Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_7"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-
-            <RadioButton
-                android:id="@+id/adventure8Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mr_chargerg"
-                android:text="@string/adventure_8"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
-        </LinearLayout>
+            android:orientation="vertical"/>
     </ScrollView>
 
     <Button

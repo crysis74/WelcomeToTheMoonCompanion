@@ -4,9 +4,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import ru.bepis.mooncompanion.domain.ScreenType
@@ -18,12 +20,12 @@ class GameSettingRepository(
     private val appScope: CoroutineScope
 ) {
 
-    val screenType: Flow<ScreenType> = dataStore.data.map {
+    val screenType: Flow<ScreenType> = dataStore.safetyData.map {
         fun Boolean.toScreenType() = if (this) ScreenType.Default else ScreenType.Mirrored
         it.isDefaultScreenType.toScreenType()
     }
 
-    val selectedGameField: Flow<Int> = dataStore.data.map {
+    val selectedGameField: Flow<Int?> = dataStore.safetyData.map {
         it.selectedGameField
     }
 
@@ -49,9 +51,11 @@ class GameSettingRepository(
     }
 
     companion object {
+        private val DataStore<Preferences>.safetyData: Flow<Preferences>
+            get() = data.catch { emit(emptyPreferences()) }
         private val Preferences.isDefaultScreenType: Boolean
             get() = this[IS_DEFAULT_SCREEN_TYPE] ?: false
-        private val Preferences.selectedGameField: Int
-            get() = this[SELECTED_GAME_FIELD] ?: 1
+        private val Preferences.selectedGameField: Int?
+            get() = this[SELECTED_GAME_FIELD]
     }
 }
