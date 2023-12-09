@@ -15,10 +15,9 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
-@Suppress("UnstableApiUsage")
 android {
     signingConfigs {
-        create("config") {
+        create("release") {
             storeFile = file(keystoreProperties["storeFile"] as String)
             storePassword = keystoreProperties["storePassword"] as String
             keyAlias = keystoreProperties["keyAlias"] as String
@@ -26,12 +25,12 @@ android {
         }
     }
     namespace = "ru.bepis.mooncompanion"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ru.bepis.mooncompanion"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 2
         versionName = "1.1"
         vectorDrawables {
@@ -47,7 +46,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("config")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     buildFeatures {
