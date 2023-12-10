@@ -17,7 +17,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.combineTransform
-import kotlinx.coroutines.flow.filterNotNull
 import org.koin.android.ext.android.inject
 import org.koin.androidx.navigation.koinNavGraphViewModel
 import ru.bepis.mooncompanion.R
@@ -54,12 +53,19 @@ class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
         initMissionLayouts()
         initMissionLayoutViews()
         initDescriptionSwitch()
+        initShowNextCardSwitch()
         combineTransform(
-            viewModel.uiState.filterNotNull(),
+            viewModel.uiState,
             isAllAnimationsIdleFlow
         ) { state, isAllAnimationsIdle ->
             if (isAllAnimationsIdle) emit(state)
         }.observe(viewLifecycleOwner, ::renderContent)
+    }
+
+    private fun initShowNextCardSwitch() {
+        binding.showNextCardSwitch.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.showNextCardType(isChecked)
+        }
     }
 
     private fun initDescriptionSwitch() {
@@ -110,14 +116,30 @@ class MissionBottomSheet : BottomSheetDialogFragment(R.layout.btm_mission) {
                 }
             }
 
-    private fun renderContent(missionItems: List<MissionItem>) = with(binding) {
-        val sortedItems = missionItems.sortedBy { it.type }
-        val sortedMissionLayouts = missionLayouts.sortedBy { it.type }
-        sortedMissionLayouts.zip(sortedItems) { layout, item ->
-            require(layout.type == item.type)
-            layout.value.renderMissionItem(item)
-            layout.value.setCompletedListener(item, layout.frontAnimation, layout.backAnimation)
+    private fun renderContent(uiState: MissionViewModel.UiState) = with(binding) {
+        when (uiState) {
+            is MissionViewModel.UiState.Content -> {
+                val sortedItems = uiState.missions.sortedBy { it.type }
+                val sortedMissionLayouts = missionLayouts.sortedBy { it.type }
+                sortedMissionLayouts.zip(sortedItems) { layout, item ->
+                    require(layout.type == item.type)
+                    layout.value.renderMissionItem(item)
+                    layout.value.setCompletedListener(
+                        item = item,
+                        frontAnimation = layout.frontAnimation,
+                        backAnimation = layout.backAnimation
+                    )
+                }
+                renderShowNextCard(uiState)
+            }
+
+            MissionViewModel.UiState.Empty -> return@with
         }
+
+    }
+
+    private fun renderShowNextCard(uiState: MissionViewModel.UiState.Content) {
+        binding.showNextCardSwitch.isChecked = uiState.shouldShowNextCardType
     }
 
     private fun AnimatedMissionLayoutBinding.renderMissionItem(missionItem: MissionItem) {

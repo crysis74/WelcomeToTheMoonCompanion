@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import ru.bepis.mooncompanion.domain.ScreenType
 import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.IS_DEFAULT_SCREEN_TYPE
 import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.SELECTED_GAME_FIELD
+import ru.bepis.mooncompanion.repository.GameSettingRepository.PreferencesKey.SHOULD_SHOW_NEXT_CARD_TYPE
 
 class GameSettingRepository(
     private val dataStore: DataStore<Preferences>,
@@ -27,6 +28,10 @@ class GameSettingRepository(
 
     val selectedGameField: Flow<Int?> = dataStore.safetyData.map {
         it.selectedGameField
+    }
+
+    val shouldShowNextCardType: Flow<Boolean> = dataStore.safetyData.map {
+        it.shouldShowNextCardType
     }
 
     fun toggleScreenType() {
@@ -45,9 +50,18 @@ class GameSettingRepository(
         }
     }
 
+    fun saveShouldShowNextCardType(shouldShow: Boolean) {
+        appScope.launch {
+            dataStore.edit {
+                it[SHOULD_SHOW_NEXT_CARD_TYPE] = shouldShow
+            }
+        }
+    }
+
     private object PreferencesKey {
         val IS_DEFAULT_SCREEN_TYPE = booleanPreferencesKey("is_default_screen_type")
         val SELECTED_GAME_FIELD = intPreferencesKey("selected_fame_field")
+        val SHOULD_SHOW_NEXT_CARD_TYPE = booleanPreferencesKey("should_show_next_card_type")
     }
 
     companion object {
@@ -57,5 +71,7 @@ class GameSettingRepository(
             get() = this[IS_DEFAULT_SCREEN_TYPE] ?: false
         private val Preferences.selectedGameField: Int?
             get() = this[SELECTED_GAME_FIELD]
+        private val Preferences.shouldShowNextCardType: Boolean
+            get() = this[SHOULD_SHOW_NEXT_CARD_TYPE] ?: false
     }
 }

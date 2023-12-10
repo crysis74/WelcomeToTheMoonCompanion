@@ -20,4 +20,5 @@
     <string name="mission_b">Б</string>
     <string name="mission_c">В</string>
     <string name="mission_description_title">Описание</string>
+    <string name="show_next_card_mission_title">Показывать идущие следом карты</string>
 </resources>

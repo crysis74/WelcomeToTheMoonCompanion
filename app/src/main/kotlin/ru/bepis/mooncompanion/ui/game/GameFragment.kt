@@ -13,7 +13,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.bepis.mooncompanion.R
 import ru.bepis.mooncompanion.databinding.CardLayoutBinding
 import ru.bepis.mooncompanion.databinding.FmtGameBinding
-import ru.bepis.mooncompanion.domain.Card
 import ru.bepis.mooncompanion.domain.CardType
 import ru.bepis.mooncompanion.domain.CardType.Astronaut
 import ru.bepis.mooncompanion.domain.CardType.Energy
@@ -87,7 +86,7 @@ class GameFragment : Fragment(R.layout.fmt_game) {
 
     private fun renderContent(content: UiState.Content) {
         renderButtonAppBar(content)
-        renderCards(content.state)
+        renderCards(content.state, content.shouldShowNextCardType)
         renderScreenType(content.screenType)
     }
 
@@ -100,16 +99,16 @@ class GameFragment : Fragment(R.layout.fmt_game) {
         setIconMenuItem(R.id.screenType, icon)
     }
 
-    private fun renderCards(state: DeckState) = with(binding) {
+    private fun renderCards(state: DeckState, shouldShowNextCardType: Boolean) = with(binding) {
         with(mainPackCard) {
-            renderCard(firstCardLayout, state.firstColumn)
-            renderCard(secondCardLayout, state.secondColumn)
-            renderCard(thirdCardLayout, state.thirdColumn)
+            renderCard(firstCardLayout, state.firstColumn, shouldShowNextCardType)
+            renderCard(secondCardLayout, state.secondColumn, shouldShowNextCardType)
+            renderCard(thirdCardLayout, state.thirdColumn, shouldShowNextCardType)
         }
         with(secondaryPackCard) {
-            renderCard(firstCardLayout, state.firstColumn)
-            renderCard(secondCardLayout, state.secondColumn)
-            renderCard(thirdCardLayout, state.thirdColumn)
+            renderCard(firstCardLayout, state.firstColumn, shouldShowNextCardType)
+            renderCard(secondCardLayout, state.secondColumn, shouldShowNextCardType)
+            renderCard(thirdCardLayout, state.thirdColumn, shouldShowNextCardType)
         }
     }
 
@@ -140,13 +139,19 @@ class GameFragment : Fragment(R.layout.fmt_game) {
         TransitionManager.beginDelayedTransition(binding.continueBtn)
     }
 
-    private fun renderCard(cardLayoutBinding: CardLayoutBinding, card: Card) =
+    private fun renderCard(
+        cardLayoutBinding: CardLayoutBinding,
+        card: CardState,
+        shouldShowNextCardType: Boolean
+    ) =
         with(cardLayoutBinding) {
-            number.text = card.number.toString()
-            typeImg.setImageResource(getCard(card.type))
+            number.text = card.cardNumber.toString()
+            typeImg.setImageResource(getDrawableCard(card.cardType))
+            listOf(typeNextImg, typeNextIcon).forEach { it.isVisible = shouldShowNextCardType }
+            typeNextImg.setImageResource(getDrawableCard(card.secondCardType))
         }
 
-    private fun getCard(type: CardType) = when (type) {
+    private fun getDrawableCard(type: CardType) = when (type) {
         Robot -> R.drawable.ic_card_robot
         Planning -> R.drawable.ic_card_planning
         Water -> R.drawable.ic_card_water

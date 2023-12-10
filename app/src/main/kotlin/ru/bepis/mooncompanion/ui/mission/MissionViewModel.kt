@@ -3,8 +3,13 @@ package ru.bepis.mooncompanion.ui.mission
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import ru.bepis.mooncompanion.decktools.MissionsGenerator
 import ru.bepis.mooncompanion.domain.Mission
@@ -21,7 +26,23 @@ class MissionViewModel(
     private val missionsGenerator: MissionsGenerator
 ) : ViewModel() {
 
-    val uiState = MutableStateFlow<List<MissionItem>?>(null)
+    sealed interface UiState {
+        data class Content(
+            val missions: List<MissionItem>,
+            val shouldShowNextCardType: Boolean
+        ) : UiState
+
+        data object Empty : UiState
+    }
+
+    private val missionsFlow = MutableStateFlow<List<MissionItem>?>(null)
+
+    val uiState: Flow<UiState> = combine(
+        missionsFlow.filterNotNull(),
+        gameSettingRepository.shouldShowNextCardType
+    ) { missions, shouldShowNextCard ->
+        UiState.Content(missions, shouldShowNextCard)
+    }.stateIn(viewModelScope, WhileSubscribed(5_000), UiState.Empty)
 
     init {
         viewModelScope.launch {
@@ -33,8 +54,12 @@ class MissionViewModel(
         }
     }
 
+    fun showNextCardType(shouldShowNextCardType: Boolean) {
+        gameSettingRepository.saveShouldShowNextCardType(shouldShowNextCardType)
+    }
+
     fun changeMissionCompletionState(item: MissionItem) {
-        val value = uiState.value ?: return
+        val value = requireNotNull(missionsFlow.value)
         val updatedItem = item.copy(isCompleted = !item.isCompleted)
         updateUiState(value.update(item, updatedItem))
     }
@@ -42,7 +67,7 @@ class MissionViewModel(
     private fun updateUiState(state: List<MissionItem>) {
         require(state.size == 3)
         require(state.map { it.type }.containsAll(MissionType.entries))
-        uiState.value = state
+        missionsFlow.value = state
     }
 
     companion object {

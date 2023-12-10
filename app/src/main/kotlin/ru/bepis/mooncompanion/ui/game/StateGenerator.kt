@@ -4,12 +4,19 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import ru.bepis.mooncompanion.decktools.DeckGenerator.Companion.shuffleDeck
 import ru.bepis.mooncompanion.domain.Card
 import ru.bepis.mooncompanion.domain.CardDeck
+import ru.bepis.mooncompanion.domain.CardType
 
 data class DeckState(
-    val firstColumn: Card,
-    val secondColumn: Card,
-    val thirdColumn: Card,
+    val firstColumn: CardState,
+    val secondColumn: CardState,
+    val thirdColumn: CardState,
     val isFirstTurn: Boolean
+)
+
+data class CardState(
+    val cardNumber: Int,
+    val cardType: CardType,
+    val secondCardType: CardType
 )
 
 class StateGenerator(private val initDeck: CardDeck) {
@@ -60,8 +67,12 @@ class StateGenerator(private val initDeck: CardDeck) {
         next()
     }
 
-    private fun makeCard(column: List<Card>): Card {
+    private fun makeCard(column: List<Card>): CardState {
         val (first, second) = column.subList(cache, cache + 2)
-        return Card(number = first.number, type = second.type)
+        return CardState(
+            cardNumber = second.number,
+            cardType = first.type,
+            secondCardType = second.type
+        )
     }
 }

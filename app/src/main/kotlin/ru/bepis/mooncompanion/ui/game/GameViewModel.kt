@@ -23,9 +23,10 @@ class GameViewModel(
             stateGenerator = StateGenerator(deckGenerator.generateDeck())
             combine(
                 stateGenerator.state,
-                gameSettingRepository.screenType
-            ) { deckState, screenType ->
-                uiState.value = UiState.Content(deckState, screenType)
+                gameSettingRepository.screenType,
+                gameSettingRepository.shouldShowNextCardType
+            ) { deckState, screenType, shouldShowNextCardType ->
+                uiState.value = UiState.Content(deckState, screenType, shouldShowNextCardType)
             }.launchIn(this)
         }
     }
@@ -39,7 +40,12 @@ class GameViewModel(
     fun onContinueClicked() = stateGenerator.next()
 
     sealed interface UiState {
-        data class Content(val state: DeckState, val screenType: ScreenType) : UiState
+        data class Content(
+            val state: DeckState,
+            val screenType: ScreenType,
+            val shouldShowNextCardType: Boolean
+        ) : UiState
+
         data object Loading : UiState
     }
 }
