@@ -1,0 +1,24 @@
+[versions]
+# SDK versions
+sdk-compile = "34"
+sdk-target = "34"
+sdk-min = "24"
+
+# Gradle plugin versions
+android-gradle-plugin = "8.2.0" # https://developer.android.com/build/releases/gradle-plugin
+
+# Kotlin versions
+kotlin = "1.9.10" # https://kotlinlang.org/docs/releases.html#release-details
+
+# Android versions
+androidx-navigation = "2.7.5" # https://developer.android.com/jetpack/androidx/releases/navigation
+
+[libraries]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-plugin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+androidx-plugin-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidx-navigation" }

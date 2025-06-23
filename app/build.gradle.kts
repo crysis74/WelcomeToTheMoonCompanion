@@ -1,12 +1,12 @@
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.serialization")
-    id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-parcelize")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.plugin.parcelize)
+    alias(libs.plugins.kotlin.plugin.serialization)
+    alias(libs.plugins.androidx.plugin.navigation)
 }
 
 val keystorePropertiesFile: File = rootProject.file("keystore.properties")
@@ -15,14 +15,16 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
+val packageId = "ru.bepis.mooncompanion"
+
 android {
-    namespace = "ru.bepis.mooncompanion"
-    compileSdk = 34
+    namespace = packageId
+    compileSdk = libs.versions.sdk.compile.get().toInt()
 
     defaultConfig {
-        applicationId = "ru.bepis.mooncompanion"
-        minSdk = 24
-        targetSdk = 34
+        applicationId = packageId
+        minSdk = libs.versions.sdk.min.get().toInt()
+        targetSdk = libs.versions.sdk.target.get().toInt()
         versionCode = 3
         versionName = "1.2"
         vectorDrawables {

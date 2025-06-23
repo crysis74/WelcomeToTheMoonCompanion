@@ -1,11 +1,15 @@
-buildscript {
-    dependencies {
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.5")
-    }
-}
+/**
+ * By listing all the plugins used throughout all subprojects in the root project build script, it
+ * ensures that the build script classpath remains the same for all projects. This avoids potential
+ * problems with mismatching versions of transitive plugin dependencies. A subproject that applies
+ * an unlisted plugin will have that plugin and its dependencies _appended_ to the classpath, not
+ * replacing pre-existing dependencies.
+ */
 plugins {
-    id("com.android.application") version "8.2.0" apply false
-    id("com.android.library") version "8.2.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.10" apply false
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.plugin.parcelize) apply false
+    alias(libs.plugins.kotlin.plugin.serialization) apply false
+    alias(libs.plugins.androidx.plugin.navigation) apply false
 }
