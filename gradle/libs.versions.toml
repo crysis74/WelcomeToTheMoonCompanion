@@ -9,11 +9,48 @@ android-gradle-plugin = "8.2.0" # https://developer.android.com/build/releases/g
 
 # Kotlin versions
 kotlin = "1.9.10" # https://kotlinlang.org/docs/releases.html#release-details
+kotlin-serialization = "1.6.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 
 # Android versions
+androidx-core = "1.12.0"  # https://developer.android.com/jetpack/androidx/releases/core
+datastore-preferences = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/datastore
+androidx-activity = "1.8.1" # https://developer.android.com/jetpack/androidx/releases/activity
+androidx-fragment = "1.6.2" # https://developer.android.com/jetpack/androidx/releases/fragment
+androidx-lifecycle = "2.6.2" # https://developer.android.com/jetpack/androidx/releases/lifecycle
 androidx-navigation = "2.7.5" # https://developer.android.com/jetpack/androidx/releases/navigation
+android-material = "1.7.0" # https://github.com/material-components/material-components-android/releases
+androidx-constraintlayout = "2.1.4" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
+
+# Other versions
+koin-bom = "3.5.1" # https://github.com/InsertKoinIO/koin/releases
+viewbinding-delegate = "1.5.8" # https://github.com/androidbroadcast/ViewBindingPropertyDelegate
 
 [libraries]
+# Kotlin
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+
+# Android core
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore-preferences" }
+
+# Android component
+androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation" }
+androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation" }
+
+# Android UI
+android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
+
+# DI
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-android-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
+
+# Other
+viewbinding-delegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewbinding-delegate" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
